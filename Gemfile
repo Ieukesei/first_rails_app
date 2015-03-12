@@ -28,6 +28,8 @@ gem "haml-rails", "~> 0.9"
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'bootswatch-rails'
+gem 'rails_12factor'
+
 
 
 # Use ActiveModel has_secure_password
