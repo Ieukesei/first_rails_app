@@ -4,7 +4,7 @@
   - @articles.each do |a|
     %div.col-lg-4
       %h2= a.title
-      %p= a.text
+      %p= a.description
 
       %p
         %a.btn.btn-primary{:href => article_path(a), :role => "button"} Show
