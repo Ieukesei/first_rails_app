@@ -1,0 +1,60 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Hugin & Munin
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %header.container
+      = image_tag("hugmun.png", :alt => "Hugin & Munin")
+
+    %div.container
+      %nav.navbar.navbar-default
+        .container-fluid
+        / Brand and toggle get grouped for better mobile display
+        .navbar-header
+          %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{:href => root_path} Home
+        / Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li.active
+              %a{:href => "#"}
+                Link
+                %span.sr-only (current)
+            %li
+              %a{:href => "#"} Link
+            
+                
+          %form.navbar-form.navbar-left{:role => "search"}
+            .form-group
+              %input.form-control{:placeholder => "Search", :type => "text"}
+            %button.btn.btn-default{:type => "submit"} Submit
+
+          %ul.nav.navbar-nav.navbar-right
+
+            -  if admin_signed_in?
+              %li
+                %a{:href => articles_path } All Articles
+              %li
+                %a{:href => destroy_admin_session_path, :method => :delete} Sign Out
+            -  else
+              -  if user_signed_in?
+                %li
+                  %a{:href => destroy_user_session_path, :method => :delete } Sign Out
+              -  else
+                %li
+                  %a{:href => new_user_session_path} Sign In
+                %li
+                  %a{:href => new_user_registration_path} Sign Up
+        / /.navbar-collapse
+      / /.container-fluid
+
+    %section.container
+      = yield

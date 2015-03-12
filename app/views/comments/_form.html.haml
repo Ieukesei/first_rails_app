@@ -1,0 +1,15 @@
+%div.row
+  %div.col-lg-6
+    = form_for([@article, @article.comments.build]) do |f|
+      %div.form-group
+        = f.label :commenter 
+    
+        = f.text_field :commenter, {:class => "form-control"}
+      %div.form-group
+        = f.label :body 
+    
+        = f.text_area :body, {:class => "form-control"}
+      %div.form-group
+        = f.submit 'Create Comment' ,:class => "btn btn-success"
+  %div.col-lg-6
+
