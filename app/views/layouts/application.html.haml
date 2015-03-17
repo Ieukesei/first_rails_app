@@ -47,6 +47,10 @@
             -  else
               -  if user_signed_in?
                 %li
+                  %a
+                    Logged as 
+                    = current_user.username
+                %li
                   %a{:href => destroy_user_session_path, :method => :delete } Sign Out
               -  else
                 %li

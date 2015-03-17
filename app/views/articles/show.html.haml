@@ -9,8 +9,13 @@
   = @article.text
 %h2 Comments
 = render @article.comments
-%h2 Add a Comment:
-= render "comments/form"
+
+- if user_signed_in? || admin_signed_in?
+  %h2 Add a Comment:
+  = render "comments/form"
+- else
+  %p
+    %a.btn.btn-success{:href => new_user_session_path, :role => "button"} Sign in to add a comment
 
 = link_to 'Back', articles_path, {:class => "btn btn-primary"}
 -  if admin_signed_in?

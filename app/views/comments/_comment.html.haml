@@ -1,10 +1,10 @@
-%p
-  %strong Commenter:
-  = comment.commenter
+%row
+  %p
+    %strong Posted by 
+    = comment.commenter
  
-%p
-  %strong Comment:
-  = comment.body
-%p
-  -  if admin_signed_in?
-    = link_to 'Destroy Comment', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"
+  %div.well
+    = comment.body
+  %p
+    -  if admin_signed_in?
+      = link_to 'Destroy Comment', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"

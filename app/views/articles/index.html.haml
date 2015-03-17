@@ -1,5 +1,6 @@
 %h1 Listing All Articles
-%a.btn.btn-primary.col-lg-12{:href => new_article_path, :role => "button"} New article »
+- if admin_signed_in?
+  %a.btn.btn-primary.col-lg-12{:href => new_article_path, :role => "button"} New article »
 %div.row
   - @articles.each do |a|
     %div.col-lg-4
@@ -8,7 +9,9 @@
 
       %p
         %a.btn.btn-primary{:href => article_path(a), :role => "button"} Show
-        %a.btn.btn-warning{:href => edit_article_path(a), :role => "button"} Edit
+        - if admin_signed_in?
+          %a.btn.btn-warning{:href => edit_article_path(a), :role => "button"} Edit
+          = link_to "Destroy", a, :method=>:delete, :class => "btn btn-danger", data: { confirm: 'Are you sure?' }
         //%a.btn.btn-danger{:href => article_path(a), :role => "button", :method => :delete, data: { confirm: 'Are you sure?' }} Destroy
-        = link_to "Destroy", a, :method=>:delete, :class => "btn btn-danger", data: { confirm: 'Are you sure?' }
+          
 
